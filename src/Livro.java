@@ -3,14 +3,16 @@ public class Livro {
     private String autor;
     private String editora;
     private int anoPublicacao;
-    public static int id = 0;
+    private static int numLivros = 0;
+    private int id;
 
     Livro(String titulo, String autor, String editora, int anoPublicacao) {
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
         this.anoPublicacao = anoPublicacao;
-        this.id++;
+        this.id = numLivros;
+        numLivros++;
     }
 
 
@@ -46,9 +48,9 @@ public class Livro {
         return this.id;
     }
 
-    /*void setId(int id) {
-        this.id = id;
-    }*/
+    static int getNumLivros() {
+        return numLivros;
+    }
 
     void imprimir() {
         System.out.println("Título: " + titulo);
