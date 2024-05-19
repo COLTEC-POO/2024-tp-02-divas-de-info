@@ -112,14 +112,14 @@ public class Biblioteca {
         System.out.print("[1] Morador\n[2] Professor\n[3] Aluno\nOpção: ");
         opcao = input.nextInt();
         System.out.println();
+        lixo = input.nextLine();
 
         switch (opcao) {
             case 1:
-                System.out.println("Nome: ");
-                lixo = input.nextLine();
+                System.out.print("Nome: ");
                 nome = input.nextLine();
 
-                System.out.println("CPF: ");
+                System.out.print("CPF: ");
                 cpf = input.nextLine();
 
                 usuarios[Usuarios.getNumUsuarios()] = new Morador(nome, cpf);
@@ -127,13 +127,13 @@ public class Biblioteca {
                 System.out.println("<< USUÁRIO CADASTRADO COM SUCESSO >>\n");
                 break;
             case 2:
-                System.out.println("Nome: ");
+                System.out.print("Nome: ");
                 nome = input.nextLine();
 
-                System.out.println("CPF: ");
+                System.out.print("CPF: ");
                 cpf = input.nextLine();
 
-                System.out.println("Formação: ");
+                System.out.print("Formação: ");
                 formacao = input.nextLine();
 
                 usuarios[Usuarios.getNumUsuarios()] = new Professor(nome, cpf, formacao);
@@ -141,13 +141,13 @@ public class Biblioteca {
                 System.out.println("<< USUÁRIO CADASTRADO COM SUCESSO >>\n");
                 break;
             case 3:
-                System.out.println("Nome: ");
+                System.out.print("Nome: ");
                 nome = input.nextLine();
 
-                System.out.println("CPF: ");
+                System.out.print("CPF: ");
                 cpf = input.nextLine();
 
-                System.out.println("Escola: ");
+                System.out.print("Escola: ");
                 escola = input.nextLine();
 
                 usuarios[Usuarios.getNumUsuarios()] = new Aluno(nome, cpf, escola);
