@@ -5,40 +5,37 @@ public class Usuarios {
     private String nome;
     private String cpf;
     private Date dataNasc;
-    public static int id = 0;
+    private static int numUsuarios = 0;
+    private int id;
     protected Livro[] livrosAlugados;
 
     Usuarios (String nome, String cpf){
         this.nome = nome;
         this.cpf = cpf;
         dataNasc = new Date();
-        id++;
+        this.id = numUsuarios;
+        numUsuarios++;
     }
 
-    boolean devolverLivro(Livro livro, Usuarios usuario){
+    boolean devolverLivro(Livro livro){
 
         for(int i = 0; i < livrosAlugados.length; i++){
             if(livrosAlugados[i].getId() == livro.getId()) {
                 livrosAlugados[i]=null;
-                System.out.println("Devolução do livro '"+ livro.getTitulo() +"' para '"+ usuario.getNome() +"' concluído.");
                 return true;
             }
         }
-        System.out.println("Erro ao devolver '" + livro.getTitulo() + "'.");
         return false;
     }
 
-    boolean pegarLivro (Livro livro, Usuarios usuario){
+    boolean pegarLivro (Livro livro){
 
         for(int i = 0; i < livrosAlugados.length; i++){
             if(livrosAlugados[i] == null) {
                 livrosAlugados[i] = livro;
-                System.out.println("Empréstimo do livro '"+ livro.getTitulo() +"' para '"+ usuario.getNome() +"' concluído.");
                 return true;
             }
         }
-        System.out.println("Erro ao alugar '" + livro.getTitulo() + "'.");
-        System.out.println("Livro está emprestado com outro usuario da biblioteca.");
         return false;
     }
 
@@ -52,7 +49,6 @@ public class Usuarios {
     }
 
     // getters
-
     String getNome(){
         return this.nome;
     }
@@ -70,7 +66,6 @@ public class Usuarios {
     }
 
     // setter
-
     void setNome( String nome){
         this.nome = nome;
     }
@@ -85,5 +80,9 @@ public class Usuarios {
 
     void setId( int id){
         this.id = id;
+    }
+
+    static int getNumUsuarios() {
+        return numUsuarios;
     }
 }
