@@ -5,6 +5,7 @@ public class Livro {
     private int anoPublicacao;
     private static int numLivros = 0;
     private int id;
+    private boolean alugado = false;
 
     Livro(String titulo, String autor, String editora, int anoPublicacao) {
         this.titulo = titulo;
@@ -50,6 +51,13 @@ public class Livro {
 
     static int getNumLivros() {
         return numLivros;
+    }
+
+    boolean isAlugado() {
+        return this.alugado;
+    }
+    void setAlugado(boolean alugado) {
+        this.alugado = alugado;
     }
 
     void imprimir() {
