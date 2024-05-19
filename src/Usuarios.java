@@ -20,9 +20,11 @@ public class Usuarios {
     boolean devolverLivro(Livro livro){
 
         for(int i = 0; i < livrosAlugados.length; i++){
-            if(livrosAlugados[i].getId() == livro.getId()) {
-                livrosAlugados[i]=null;
-                return true;
+            if (livrosAlugados[i] != null) {
+                if(livrosAlugados[i].getId() == livro.getId()) {
+                    livrosAlugados[i] = null;
+                    return true;
+                }
             }
         }
         return false;
