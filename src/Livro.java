@@ -3,15 +3,16 @@ public class Livro {
     private String autor;
     private String editora;
     private int anoPublicacao;
-    private int id;
+    public static int id = 0;
 
-    Livro(String titulo, String autor, String editora, int anoPublicacao, int id) {
+    Livro(String titulo, String autor, String editora, int anoPublicacao) {
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
         this.anoPublicacao = anoPublicacao;
-        this.id = id;
+        this.id++;
     }
+
 
     String getTitulo() {
         return this.titulo;
@@ -45,14 +46,14 @@ public class Livro {
         return this.id;
     }
 
-    void setId(int id) {
+    /*void setId(int id) {
         this.id = id;
-    }
+    }*/
 
     void imprimir() {
         System.out.println("Título: " + titulo);
         System.out.println("Autor: " + autor);
         System.out.println("Editora: " + editora);
-        System.out.println("Ano de Publicação: " + anoPublicacao);
+        System.out.println("Ano de Publicação: " + anoPublicacao + "\n");
     }
 }
