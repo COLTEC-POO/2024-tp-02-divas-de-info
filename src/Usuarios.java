@@ -1,18 +1,26 @@
 import java.util.Date;
+
 public class Usuarios {
 
     private String nome;
     private String cpf;
     private Date dataNasc;
-    private int id;
+    public static int id = 0;
     protected Livro[] livrosAlugados;
 
-    boolean devolverLivro(Livro livro){
+    Usuarios (String nome, String cpf){
+        this.nome = nome;
+        this.cpf = cpf;
+        dataNasc = new Date();
+        id++;
+    }
 
-        for(int i=0; i<livrosAlugados.length; i++){
+    boolean devolverLivro(Livro livro, Usuarios usuario){
+
+        for(int i = 0; i < livrosAlugados.length; i++){
             if(livrosAlugados[i].getId() == livro.getId()) {
                 livrosAlugados[i]=null;
-                System.out.println("Devolução do livro '"+ livro.getTitulo() +"' concluída.");
+                System.out.println("Devolução do livro '"+ livro.getTitulo() +"' para '"+ usuario.getNome() +"' concluído.");
                 return true;
             }
         }
@@ -20,24 +28,26 @@ public class Usuarios {
         return false;
     }
 
-    boolean pegarLivro (Livro livro){
+    boolean pegarLivro (Livro livro, Usuarios usuario){
 
-        for(int i=0; i<livrosAlugados.length; i++){
-
+        for(int i = 0; i < livrosAlugados.length; i++){
             if(livrosAlugados[i] == null) {
                 livrosAlugados[i] = livro;
-                System.out.println("Empréstimo do livro '"+ livro.getTitulo() +"' concluído.");
+                System.out.println("Empréstimo do livro '"+ livro.getTitulo() +"' para '"+ usuario.getNome() +"' concluído.");
                 return true;
             }
         }
         System.out.println("Erro ao alugar '" + livro.getTitulo() + "'.");
+        System.out.println("Livro está emprestado com outro usuario da biblioteca.");
         return false;
     }
 
     void imprimirLivros(){
         System.out.println("Livros alugados pelo usuário '" + this.nome + "':");
         for(int i=0; i<livrosAlugados.length; i++){
-            livrosAlugados[i].imprimir();
+            if (livrosAlugados[i] != null) {
+                livrosAlugados[i].imprimir();
+            }
         }
     }
 
@@ -62,7 +72,7 @@ public class Usuarios {
     // setter
 
     void setNome( String nome){
-         this.nome = nome;
+        this.nome = nome;
     }
 
     void setCpf( String cpf){
